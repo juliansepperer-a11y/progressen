@@ -240,10 +240,10 @@ class $modify(BRPauseLayer, PauseLayer) {
 			menu->updateLayout();
 		} else {
 			// Fallback, falls die Node-ID nicht existiert
-			auto menu = CCMenu::create();
-			menu->setPosition({ 30.f, 40.f });
-			menu->addChild(toggler);
-			this->addChild(menu);
+			auto newmenu = CCMenu::create();
+			newmenu->setPosition({ 30.f, 40.f });
+			newmenu->addChild(toggler);
+			this->addChild(newmenu);
 		}
 	}
 
