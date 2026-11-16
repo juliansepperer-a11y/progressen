@@ -1,0 +1,49 @@
+{
+	"geode": "v5.11.2",
+	"gd": {
+		"win": "2.208",
+		"android32": "2.208",
+		"android64": "2.208",
+		"mac": "2.208",
+		"ios": "2.208"
+	},
+	"id": "cool1937.progressen",
+	"name": "Progressen",
+	"version": "v1.0.0",
+	"developer": "cool1937",
+	"description": "Zeigt den besten Run als gestrichelte Linie mit Prozent und optional als halbtransparenten Geist.",
+	"settings": {
+		"enabled": {
+			"type": "bool",
+			"name": "Mod aktiv",
+			"description": "Schaltet alles ein/aus (auch per Tastenkombination und im Pause-Menü).",
+			"default": true
+		},
+		"show-line": {
+			"type": "bool",
+			"name": "Gestrichelte Linie anzeigen",
+			"default": true
+		},
+		"show-ghost": {
+			"type": "bool",
+			"name": "Besten Run als Geist anzeigen",
+			"description": "Zeigt den besten Run halbtransparent im Hintergrund.",
+			"default": true
+		},
+		"ghost-opacity": {
+			"type": "float",
+			"name": "Geist-Transparenz",
+			"default": 0.3,
+			"min": 0.05,
+			"max": 1.0,
+			"control": {
+				"slider": true
+			}
+		},
+		"toggle-key": {
+			"type": "keybind",
+			"name": "Tastenkombination Ein/Aus",
+			"default": "Ctrl+B"
+		}
+	}
+}
