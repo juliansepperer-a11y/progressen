@@ -82,7 +82,8 @@ class $modify(BRPlayLayer, PlayLayer) {
 		auto node = CCNode::create();
 		auto draw = CCDrawNode::create();
 		ccColor4F col = { 1.f, 1.f, 1.f, 0.8f };
-		for (float y = -300.f; y < 3000.f; y += 30.f) {
+		// Sehr lange Linie, damit sie von ganz unten bis ganz oben reicht
+		for (float y = -2000.f; y < 8000.f; y += 30.f) {
 			draw->drawSegment({ x, y }, { x, y + 18.f }, 0.8f, col);
 		}
 		node->addChild(draw);
@@ -172,7 +173,11 @@ class $modify(BRPlayLayer, PlayLayer) {
 		if (f->lineNode) {
 			f->lineNode->setVisible(showLine);
 			if (f->lineLabel) {
-				f->lineLabel->setPositionY(m_player1->getPositionY() + 70.f);
+				// Prozentzahl liegt auf der Linie und bleibt immer am oberen
+				// Bildschirmrand, egal wie hoch die Kamera steigt.
+				auto winSize = CCDirector::get()->getWinSize();
+				auto topInLayer = m_objectLayer->convertToNodeSpace({ 0.f, winSize.height - 25.f });
+				f->lineLabel->setPositionY(topInLayer.y);
 			}
 		}
 
@@ -240,10 +245,10 @@ class $modify(BRPauseLayer, PauseLayer) {
 			menu->updateLayout();
 		} else {
 			// Fallback, falls die Node-ID nicht existiert
-			auto newmenu = CCMenu::create();
-			newmenu->setPosition({ 30.f, 40.f });
-			newmenu->addChild(toggler);
-			this->addChild(newmenu);
+			auto fallbackMenu = CCMenu::create();
+			fallbackMenu->setPosition({ 30.f, 40.f });
+			fallbackMenu->addChild(toggler);
+			this->addChild(fallbackMenu);
 		}
 	}
 
